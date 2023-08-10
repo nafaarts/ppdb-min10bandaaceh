@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    .required::after {
+        @apply content-['*'] ml-0.5 text-red-500;
+    }
+
+    .badge {
+        @apply flex items-center justify-center w-5 h-5 rounded;
+    }
+}
