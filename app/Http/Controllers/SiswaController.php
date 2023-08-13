@@ -87,8 +87,8 @@ class SiswaController extends Controller
 
         // sertifikat diubah jadi berkas Lampiran
         foreach ($request->sertifikat ?? [] as $sertifikat) {
-            $sertifikat->store('public/sertifikat/');
             $fileName = 'sertifikat/' .  $validated['no_daftar'] . '-' .  $sertifikat->getClientOriginalName();
+            $sertifikat->storeAs('public/', $fileName);
             $siswa->sertifikat()->create(['file_name' => $fileName]);
         }
 
@@ -173,8 +173,8 @@ class SiswaController extends Controller
 
         // sertifikat diubah jadi berkas Lampiran
         foreach ($request->sertifikat ?? [] as $sertifikat) {
-            $sertifikat->store('public/sertifikat/');
-            $fileName = 'sertifikat/' . $siswa->no_daftar . '-' .  $sertifikat->getClientOriginalName();
+            $fileName = 'sertifikat/' .  $siswa->no_daftar . '-' .  $sertifikat->getClientOriginalName();
+            $sertifikat->storeAs('public/', $fileName);
             $siswa->sertifikat()->create(['file_name' => $fileName]);
         }
 
