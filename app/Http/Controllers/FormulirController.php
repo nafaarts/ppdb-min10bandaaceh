@@ -69,6 +69,6 @@ class FormulirController extends Controller
         $response = new Response('Cookie has been set.');
         $response->cookie('register_status', 'true', $minutes);
 
-        return redirect()->back()->withCookie($response->headers->getCookies()[0]);
+        return redirect()->route('bukti-pendaftaran', ['no_daftar' => $validated['no_daftar']])->withCookie($response->headers->getCookies()[0]);
     }
 }
