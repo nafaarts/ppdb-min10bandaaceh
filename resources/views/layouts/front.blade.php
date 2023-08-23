@@ -69,6 +69,12 @@
                         @endphp
                         <a @if ($statusPendaftaran) href="{{ route('formulir') }}" @else href="javascript:alert('Maaf pendaftaran sudah ditutup!')" @endif
                             class="block px-6 py-2 text-gray-800 hover:bg-gray-100 whitespace-nowrap">Formulir</a>
+
+                        <a href="{{ route('bukti-pendaftaran') }}"
+                            class="block px-6 py-2 text-gray-800 hover:bg-gray-100 whitespace-nowrap">
+                            Cetak Bukti Pendaftaran
+                        </a>
+
                         @if ($statusPengumuman)
                             <a href="{{ route('data-lulus') }}"
                                 class="block px-6 py-2 text-gray-800 hover:bg-gray-100 whitespace-nowrap">

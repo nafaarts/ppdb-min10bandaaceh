@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CetakBuktiPendaftaranController;
 use App\Http\Controllers\DaftarUlangController;
 use App\Http\Controllers\DeleteSertifikatController;
 use App\Http\Controllers\FormulirController;
@@ -60,6 +61,13 @@ Route::get('/pengumuman-kelulusan', function () {
 
     return view('data-lulus', compact('siswa'));
 })->name('data-lulus');
+
+// bukti pendaftaram
+Route::get('/bukti-pendaftaran', function () {
+    $siswa = request('no_daftar') ? Siswa::where('no_daftar', request('no_daftar'))->first() : null;
+    return view('bukti-pendaftaran', compact('siswa'));
+})->name('bukti-pendaftaran');
+Route::post('/bukti-pendaftaran/{siswa}/cetak', CetakBuktiPendaftaranController::class)->name('cetak.bukti-pendaftaran');
 
 Route::get('/dashboard', function () {
     $siswa = Siswa::latest()->limit(5)->get();
