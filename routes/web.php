@@ -50,11 +50,14 @@ Route::get('/pengumuman-kelulusan', function () {
 
     $siswa = Siswa::latest()
         ->when(request('cari'), function ($query) {
-            $query->where('nama_lengkap', 'like', "%" . request('cari') . "%")
-                ->orWhere('nik', 'like', "%" . request('cari') . "%")
-                ->orWhere('nama_ayah', 'like', "%" . request('cari') . "%")
-                ->orWhere('nama_ibu', 'like', "%" . request('cari') . "%")
-                ->orWhere('nama_wali', 'like', "%" . request('cari') . "%");
+            $query->where(function ($query) {
+                $query->where('no_daftar', 'like', "%" . request('cari') . "%")
+                    ->orWhere('nama_lengkap', 'like', "%" . request('cari') . "%")
+                    ->orWhere('nik', 'like', "%" . request('cari') . "%")
+                    ->orWhere('nama_ayah', 'like', "%" . request('cari') . "%")
+                    ->orWhere('nama_ibu', 'like', "%" . request('cari') . "%")
+                    ->orWhere('nama_wali', 'like', "%" . request('cari') . "%");
+            });
         })
         ->where('status_lulus', 1)
         ->paginate();
