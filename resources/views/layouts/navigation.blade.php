@@ -43,11 +43,13 @@
                     </div>
                 @endcan
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('penilaian')" :active="request()->routeIs('penilaian*')">
-                        {{ __('Penilaian') }}
-                    </x-nav-link>
-                </div>
+                @can('guru')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('penilaian')" :active="request()->routeIs('penilaian*')">
+                            {{ __('Penilaian') }}
+                        </x-nav-link>
+                    </div>
+                @endcan
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('daftar-ulang')" :active="request()->routeIs('daftar-ulang*')">

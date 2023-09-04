@@ -85,9 +85,11 @@ Route::middleware('auth')->group(function () {
     // data siswa
     Route::resource('siswa', SiswaController::class);
 
-    // penilaian
-    Route::get('/penilaian', [PenilaianController::class, 'index'])->name('penilaian');
-    Route::post('/penilaian/{siswa}/nilai', [PenilaianController::class, 'update'])->name('penilaian.nilai');
+    Route::middleware('can:guru')->group(function () {
+        // penilaian
+        Route::get('/penilaian', [PenilaianController::class, 'index'])->name('penilaian');
+        Route::post('/penilaian/{siswa}/nilai', [PenilaianController::class, 'update'])->name('penilaian.nilai');
+    });
 
     // daftar ulang
     Route::get('/daftar-ulang', [DaftarUlangController::class, 'index'])->name('daftar-ulang');

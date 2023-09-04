@@ -84,7 +84,7 @@
                                 <x-input-label for="status_anak" value="Status Anak" class="required" />
                                 <x-select id="status_anak" name="status_anak" class="mt-1 block w-full">
                                     <option value="">-- pilih status anak --</option>
-                                    @foreach (['TIDAK', 'YATIM', 'PIATU', 'YATIM PIATU'] as $item)
+                                    @foreach (['NON YATIM PIATU', 'YATIM', 'PIATU', 'YATIM PIATU'] as $item)
                                         <option @selected(old('status_anak', $siswa->status_anak) == $item)>{{ $item }}</option>
                                     @endforeach
                                 </x-select>
@@ -162,7 +162,7 @@
 
                         <div class="flex flex-col md:flex-row gap-6">
                             <div class="w-full md:w-1/2">
-                                <x-input-label for="asal_sekolah" value="Asal Sekolah (TK/RA)" />
+                                <x-input-label for="asal_sekolah" value="Asal Sekolah (TK)" />
                                 <x-text-input id="asal_sekolah" name="asal_sekolah" type="text"
                                     class="mt-1 block w-full" :value="old('asal_sekolah', $siswa->asal_sekolah)" autocomplete="asal_sekolah" />
                                 <x-input-error class="mt-2" :messages="$errors->get('asal_sekolah')" />
@@ -351,13 +351,37 @@
 
                         <hr>
 
-                        <div>
-                            <x-input-label for="sertifikat" value="Upload Berkas Lampiran" class="mb-3" />
-                            <x-file-input id="sertifikat" name="sertifikat[]" class="block w-full" :value="old('sertifikat')"
-                                accept="application/pdf" multiple />
-                            <x-input-error class="mt-3" :messages="$errors->get('sertifikat')" />
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="w-full md:w-1/2">
+                                <x-input-label for="pas_foto" value="Pas Foto" class="mb-3" />
+                                <x-file-input id="pas_foto" name="sertifikat[]" class="block w-full border p-1"
+                                    accept="application/pdf" required />
+                            </div>
+                            <div class="w-full md:w-1/2">
+                                <x-input-label for="akte_kelahiran" value="Akte Kelahiran" class="mb-3" />
+                                <x-file-input id="akte_kelahiran" name="sertifikat[]" class="block w-full border p-1"
+                                    accept="application/pdf" required />
+                            </div>
                         </div>
 
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="w-full md:w-1/2">
+                                <x-input-label for="kartu_keluarga" value="Kartu Keluarga" class="mb-3" />
+                                <x-file-input id="kartu_keluarga" name="sertifikat[]" class="block w-full border p-1"
+                                    accept="application/pdf" required />
+                            </div>
+                            <div class="w-full md:w-1/2">
+                                <x-input-label for="ktp_ayah_ibu" value="KTP Ayah dan Ibu" class="mb-3" />
+                                <x-file-input id="ktp_ayah_ibu" name="sertifikat[]" class="block w-full border p-1"
+                                    accept="application/pdf" required />
+                            </div>
+                        </div>
+
+                        <div>
+                            <x-input-label for="sertifikat" value="Sertifikat" class="mb-3" />
+                            <x-file-input id="sertifikat" name="sertifikat[]" class="block w-full border p-1"
+                                accept="application/pdf" multiple />
+                        </div>
                     </div>
                 </form>
 

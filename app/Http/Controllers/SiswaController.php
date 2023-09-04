@@ -6,6 +6,7 @@ use App\Models\Siswa;
 use App\Models\Sertifikat;
 use Illuminate\Http\Request;
 use App\Models\KategoriNilai;
+use App\Rules\BirthYearRule;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,7 +19,8 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::latest()
             ->when(request('cari'), function ($query) {
-                $query->where('nama_lengkap', 'like', "%" . request('cari') . "%")
+                $query->where('no_daftar', 'like', "%" . request('cari') . "%")
+                    ->orwhere('nama_lengkap', 'like', "%" . request('cari') . "%")
                     ->orWhere('nik', 'like', "%" . request('cari') . "%")
                     ->orWhere('nama_ayah', 'like', "%" . request('cari') . "%")
                     ->orWhere('nama_ibu', 'like', "%" . request('cari') . "%")
@@ -45,7 +47,7 @@ class SiswaController extends Controller
             'nama_lengkap' => 'required',
             'nik' => 'required|numeric|unique:siswa',
             'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
+            'tanggal_lahir' => ['required', new BirthYearRule(7)],
             'anak_ke' => 'required|numeric',
             'jumlah_saudara_kandung' => 'required|numeric',
             'status_anak_dalam_keluarga' => 'required',
@@ -133,7 +135,7 @@ class SiswaController extends Controller
             'nama_lengkap' => 'required',
             'nik' => ['required', 'numeric', Rule::unique(Siswa::class)->ignore($siswa)],
             'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
+            'tanggal_lahir' => ['required', new BirthYearRule(7)],
             'anak_ke' => 'required|numeric',
             'jumlah_saudara_kandung' => 'required|numeric',
             'status_anak_dalam_keluarga' => 'required',

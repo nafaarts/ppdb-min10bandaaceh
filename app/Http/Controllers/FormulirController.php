@@ -50,8 +50,8 @@ class FormulirController extends Controller
             'penghasilan_wali' => 'required',
             'no_hp_wali' => 'required|numeric',
             'alamat_wali' => 'required',
+            'sertifikat.*' => 'required'
         ]);
-
 
         // no daftar
         $validated['no_daftar'] = 'PPDB-' . str_pad((Siswa::latest()->first()?->id ?? 0) + 1, 4, '0', STR_PAD_LEFT);

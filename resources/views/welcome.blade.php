@@ -12,7 +12,7 @@
             @php
                 $statusPendaftaran = App\Models\KonfigurasiUmum::where('nama', 'status_pendaftaran')->first()?->value;
             @endphp
-            <a @if ($statusPendaftaran) href="{{ route('formulir') }}" @else href="javascript:alert('Maaf pendaftaran sudah ditutup!')" @endif
+            <a @if ($statusPendaftaran) href="{{ route('formulir', ['show_notes' => 1]) }}" @else href="javascript:alert('Maaf pendaftaran sudah ditutup!')" @endif
                 class="inline-flex items-center bg-transparent border py-1 px-3 focus:outline-none hover:bg-white hover:text-black rounded text-base mt-4 md:mt-0">
                 Daftar Sekarang
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
