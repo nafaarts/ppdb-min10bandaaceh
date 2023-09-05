@@ -377,11 +377,17 @@
                             </div>
                         </div>
 
-                        <div>
-                            <x-input-label for="sertifikat" value="Sertifikat" class="mb-3" />
-                            <x-file-input id="sertifikat" name="sertifikat[]" class="block w-full border p-1"
-                                accept="application/pdf" multiple />
-                        </div>
+                        <div class="flex flex-col md:flex-row gap-6">
+        <div class="w-full md:w-1/2">
+            <x-input-label for="sertifikat" value="Sertifikat" class="mb-3" />
+            <x-file-input id="sertifikat" name="sertifikat[]" class="block w-full border p-1" accept="application/pdf"
+            multiple />
+        </div>
+        <div class="w-full md:w-1/2">
+            <x-input-label for="surat_dokter" value="Surat Izin Dokter (jika ada)" class="mb-3" />
+            <x-file-input id="surat_dokter" name="sertifikat[]" class="block w-full border p-1" accept="application/pdf"/>
+        </div>
+   </div>
                     </div>
                 </form>
 
