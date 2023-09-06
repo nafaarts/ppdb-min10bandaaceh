@@ -9,6 +9,7 @@
             <hr class="my-6">
             @if (request('show_notes') == 1)
                 <div class="space-y-6">
+                    <p>Sebelum mengisi formulir pendaftaran, mohon melengkapi berkas berikut :</p>
                     @include('form.notes')
                     <x-a-primary-button class="py-2 px-3" :href="route('formulir')">
                         Lanjutkan
