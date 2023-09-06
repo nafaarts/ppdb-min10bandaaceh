@@ -331,12 +331,12 @@
 
     <div class="flex flex-col md:flex-row gap-6">
         <div class="w-full md:w-1/2">
-            <x-input-label for="pas_foto" value="Pas Foto" class="mb-3" />
+            <x-input-label for="pas_foto" value="Pas Foto" class="mb-3 required" />
             <x-file-input id="pas_foto" name="sertifikat[]" class="block w-full border p-1"
                 accept="application/pdf" required />
         </div>
         <div class="w-full md:w-1/2">
-            <x-input-label for="akte_kelahiran" value="Akte Kelahiran" class="mb-3" />
+            <x-input-label for="akte_kelahiran" value="Akte Kelahiran" class="mb-3 required" />
             <x-file-input id="akte_kelahiran" name="sertifikat[]" class="block w-full border p-1"
                 accept="application/pdf" required />
         </div>
@@ -344,12 +344,12 @@
 
     <div class="flex flex-col md:flex-row gap-6">
         <div class="w-full md:w-1/2">
-            <x-input-label for="kartu_keluarga" value="Kartu Keluarga" class="mb-3" />
+            <x-input-label for="kartu_keluarga" value="Kartu Keluarga" class="mb-3 required" />
             <x-file-input id="kartu_keluarga" name="sertifikat[]" class="block w-full border p-1"
                 accept="application/pdf" required />
         </div>
         <div class="w-full md:w-1/2">
-            <x-input-label for="ktp_ayah_ibu" value="KTP Ayah dan Ibu" class="mb-3" />
+            <x-input-label for="ktp_ayah_ibu" value="KTP Ayah dan Ibu" class="mb-3 required" />
             <x-file-input id="ktp_ayah_ibu" name="sertifikat[]" class="block w-full border p-1"
                 accept="application/pdf" required />
         </div>
@@ -358,14 +358,15 @@
     <div class="flex flex-col md:flex-row gap-6">
         <div class="w-full md:w-1/2">
             <x-input-label for="sertifikat" value="Sertifikat" class="mb-3" />
-            <x-file-input id="sertifikat" name="sertifikat[]" class="block w-full border p-1" accept="application/pdf"
-            multiple />
+            <x-file-input id="sertifikat" name="sertifikat[]" class="block w-full border p-1"
+                accept="application/pdf" multiple />
         </div>
         <div class="w-full md:w-1/2">
             <x-input-label for="surat_dokter" value="Surat Izin Dokter (jika ada)" class="mb-3" />
-            <x-file-input id="surat_dokter" name="sertifikat[]" class="block w-full border p-1" accept="application/pdf"/>
+            <x-file-input id="surat_dokter" name="sertifikat[]" class="block w-full border p-1"
+                accept="application/pdf" />
         </div>
-   </div>
+    </div>
 
     @include('form.notes')
 
