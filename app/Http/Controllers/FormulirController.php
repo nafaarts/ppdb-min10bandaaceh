@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Rules\BirthYearRule;
 
 class FormulirController extends Controller
 {
@@ -17,7 +18,7 @@ class FormulirController extends Controller
             'nama_lengkap' => 'required',
             'nik' => 'required|numeric|unique:siswa',
             'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
+            'tanggal_lahir' => ['required', new BirthYearRule(7)],
             'anak_ke' => 'required|numeric',
             'jumlah_saudara_kandung' => 'required|numeric',
             'status_anak_dalam_keluarga' => 'required',
